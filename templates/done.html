@@ -3,54 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Готово</title>
+<title>Готово — BLACK RUSSIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #1a1410;
-    color: #e8dcc8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0e0e0e;
+    color: #ffffff;
+    font-family: 'Montserrat', -apple-system, sans-serif;
     min-height: 100vh;
-    padding: 80px 16px;
+    padding: 0 0 40px;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(255,60,0,0.15), transparent 60%),
+      linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(10,10,10,0.6);
+  }
+  .header img { height: 42px; width: 42px; object-fit: contain; margin-right: 12px; }
+  .header .title { display: flex; flex-direction: column; line-height: 1; }
+  .header .title .b { color: #ff4400; font-weight: 900; font-size: 17px; letter-spacing: 1.2px; }
+  .header .title .r { color: #ffffff; font-weight: 900; font-size: 17px; letter-spacing: 1.2px; }
+  .wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 80px 20px 0;
     text-align: center;
   }
-  .wrap { max-width: 400px; margin: 0 auto; }
   .check {
-    width: 80px; height: 80px;
-    background: linear-gradient(135deg, #ff8c00, #ff6b00);
+    width: 88px;
+    height: 88px;
+    background: linear-gradient(135deg, #ff4400, #cc2800);
     border-radius: 50%;
-    margin: 0 auto 24px;
+    margin: 0 auto 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
-    color: #1a1410;
-    box-shadow: 0 8px 32px rgba(255,140,0,0.4);
+    font-size: 44px;
+    color: #ffffff;
+    box-shadow: 0 12px 40px rgba(255,60,0,0.5);
   }
   h1 {
-    color: #ff8c00;
+    color: #ffffff;
     font-size: 22px;
-    margin-bottom: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
   }
-  p { color: #c8b8a0; line-height: 1.6; font-size: 14px; }
+  h1 .orange { color: #ff4400; }
+  p {
+    color: #8a8a8a;
+    line-height: 1.7;
+    font-size: 14px;
+    font-weight: 500;
+  }
   a {
     display: inline-block;
-    margin-top: 32px;
-    color: #ff8c00;
+    margin-top: 36px;
+    color: #ff4400;
     text-decoration: none;
-    font-size: 14px;
-    padding: 12px 24px;
-    border: 1px solid #3a2a1c;
-    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: 1px solid rgba(255,60,0,0.4);
+    border-radius: 14px;
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="check">✓</div>
-  <h1>Изменения сохранены</h1>
-  <p>Оператор обработает заявку в ближайшее время.</p>
-  <a href="/">← На главную</a>
-</div>
+  <div class="header">
+    <img src="https://i.postimg.cc/y86F1KVm/images-(9).jpg" alt="BR">
+    <div class="title">
+      <span class="b">BLACK</span>
+      <span class="r">RUSSIA</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="check">✓</div>
+    <h1>Изменения <span class="orange">сохранены</span></h1>
+    <p>Оператор обработает заявку в ближайшее время.</p>
+    <a href="/">← На главную</a>
+  </div>
 </body>
 </html>
