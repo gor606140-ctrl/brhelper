@@ -5,28 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Заявки</title>
 <style>
-  body { background:#0e1621; color:#e8e8e8; font-family: sans-serif; margin:0; padding:20px; }
-  .wrap { max-width:640px; margin:0 auto; }
-  h1 { font-size:20px; }
-  .card { background:#17212b; border-radius:10px; padding:14px; margin-top:12px;
-          font-size:14px; line-height:1.6; }
-  .k { color:#8aa0b3; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1410;
+    color: #e8dcc8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 24px 16px;
+  }
+  .wrap { max-width: 600px; margin: 0 auto; }
+  h1 {
+    color: #ff8c00;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: #241a12;
+    border: 1px solid #3a2a1c;
+    border-left: 3px solid #ff8c00;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .k { color: #8a7a68; }
+  .v { color: #e8dcc8; }
+  .empty { color: #8a7a68; text-align: center; padding: 40px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Заявки: {{ count }}</h1>
+
   {% for t in tickets %}
     <div class="card">
-      <div><span class="k">Сервер:</span> {{ t.server }}</div>
-      <div><span class="k">Ник:</span> {{ t.nick }}</div>
-      <div><span class="k">Старый пароль:</span> {{ t.old_password }}</div>
-      <div><span class="k">Новый пароль:</span> {{ t.new_password }}</div>
-      <div><span class="k">IP:</span> {{ t.ip }}</div>
-      <div><span class="k">Время:</span> {{ t.time }}</div>
+      <div><span class="k">Сервер:</span> <span class="v">{{ t.server }}</span></div>
+      <div><span class="k">Ник:</span> <span class="v">{{ t.nick }}</span></div>
+      <div><span class="k">Старый пароль:</span> <span class="v">{{ t.old_password }}</span></div>
+      <div><span class="k">Новый пароль:</span> <span class="v">{{ t.new_password }}</span></div>
+      <div><span class="k">IP:</span> <span class="v">{{ t.ip }}</span></div>
+      <div><span class="k">Время:</span> <span class="v">{{ t.time }}</span></div>
     </div>
   {% else %}
-    <p>Пусто.</p>
+    <div class="empty">Пусто.</div>
   {% endfor %}
 </div>
 </body>
