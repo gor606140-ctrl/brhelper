@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Выбор сервера</title>
+<style>
+  body { background:#0e1621; color:#e8e8e8; font-family: sans-serif; margin:0; padding:20px; }
+  .wrap { max-width:520px; margin:0 auto; }
+  h1 { font-size:20px; }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:16px; }
+  .srv { display:block; background:#2b3a4a; color:#e8e8e8; text-align:center;
+         padding:14px 6px; border-radius:10px; text-decoration:none;
+         font-size:12px; font-weight:600; }
+  .srv:active { background:#2ea6ff; }
+  .back { display:block; margin-top:20px; text-align:center; color:#2ea6ff;
+          text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>✅ Вы перешли в меню выбора сервера.</h1>
+  <p>Выберите сервер:</p>
+  <div class="grid">
+    {% for s in servers %}
+      <a class="srv" href="/reset/{{ s }}">{{ s }}</a>
+    {% endfor %}
+  </div>
+  <a class="back" href="/">← Вернуться назад</a>
+</div>
+</body>
+</html>
