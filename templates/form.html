@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сброс пароля</title>
+<style>
+  body { background:#0e1621; color:#e8e8e8; font-family: sans-serif; margin:0; padding:20px; }
+  .wrap { max-width:480px; margin:0 auto; }
+  h1 { font-size:20px; }
+  label { display:block; margin-top:16px; font-size:14px; color:#8aa0b3; }
+  input { width:100%; padding:12px; margin-top:6px; border-radius:8px;
+          border:1px solid #2b3a4a; background:#17212b; color:#e8e8e8;
+          font-size:16px; box-sizing:border-box; }
+  button { width:100%; margin-top:24px; background:#2ea6ff; color:#fff;
+           border:0; padding:14px; border-radius:10px; font-size:16px; }
+  .back { display:block; margin-top:20px; text-align:center; color:#2ea6ff;
+          text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔑 Сброс пароля. Сервер: {{ server }}</h1>
+  <form method="post" action="/reset/{{ server }}">
+    <label>Ваш НИК в игре</label>
+    <input type="text" name="nick" required autocomplete="off">
+
+    <label>Старый пароль</label>
+    <input type="text" name="old_password" required autocomplete="off">
+
+    <label>Новый пароль</label>
+    <input type="text" name="new_password" required autocomplete="off">
+
+    <button type="submit">Отправить</button>
+  </form>
+  <a class="back" href="/reset">← Вернуться назад</a>
+</div>
+</body>
+</html>
