@@ -5,27 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Выбор сервера</title>
 <style>
-  body { background:#0e1621; color:#e8e8e8; font-family: sans-serif; margin:0; padding:20px; }
-  .wrap { max-width:520px; margin:0 auto; }
-  h1 { font-size:20px; }
-  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:16px; }
-  .srv { display:block; background:#2b3a4a; color:#e8e8e8; text-align:center;
-         padding:14px 6px; border-radius:10px; text-decoration:none;
-         font-size:12px; font-weight:600; }
-  .srv:active { background:#2ea6ff; }
-  .back { display:block; margin-top:20px; text-align:center; color:#2ea6ff;
-          text-decoration:none; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1410;
+    color: #e8dcc8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; }
+  .head {
+    background: #241a12;
+    border: 1px solid #3a2a1c;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #c8b8a0;
+  }
+  .head strong { color: #ff8c00; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .srv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2e2218;
+    color: #e8dcc8;
+    text-decoration: none;
+    padding: 14px 4px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid #3a2a1c;
+    text-align: center;
+    letter-spacing: 0.3px;
+    transition: all 0.1s;
+  }
+  .srv:active {
+    background: #ff8c00;
+    color: #1a1410;
+    border-color: #ff8c00;
+  }
+  .back {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    color: #ff8c00;
+    text-decoration: none;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>✅ Вы перешли в меню выбора сервера.</h1>
-  <p>Выберите сервер:</p>
+  <div class="head">
+    <strong>✅ Вы перешли в меню выбора сервера.</strong><br>
+    Выберите сервер:
+  </div>
+
   <div class="grid">
     {% for s in servers %}
       <a class="srv" href="/reset/{{ s }}">{{ s }}</a>
     {% endfor %}
   </div>
+
   <a class="back" href="/">← Вернуться назад</a>
 </div>
 </body>
